@@ -1,0 +1,11 @@
+--- # webserver setup for jenkins test
+- hosts: webserver
+  user: test
+  sudo: yes
+  tasks:
+  - name: installing httpd package
+    yum: name=httpd state=insalled
+  - name: copy index.html
+    copy: src=index.html dest=/var/www/html/index.html
+  - name: start httpd service
+    service: name=httpd state=started 
